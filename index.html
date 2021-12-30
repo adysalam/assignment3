@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 3</title>
- 
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
         <style>
@@ -26,12 +24,12 @@
         <div class="row" style="margin-left: 25%; margin-top: 5%;">
             <div style="width: 100%;">
                 <h3 style="text-transform: uppercase; font-weight: bold;">data covid 19 indonesia</h3>
-                <p>Positif : <span id="spPositif">0</span></p>
-                <p>Sembuh : <span id="spSembuh">0</span></p>
-                <p>Meninggal : <span id="spMeniggal">0</span></p><br>
+                <p>Positif : <span id="dataPositif">0</span></p>
+                <p>Sembuh : <span id="dataSembuh">0</span></p>
+                <p>Meninggal : <span id="dataMeninggal">0</span></p><br>
             </div>
            
-           <table id="myTable">
+           <table id="datacovid">
                 <thead>
                     <tr style="font-weight: bold; text-align: center;">
                         <td>Provinsi</td>
@@ -52,7 +50,7 @@
             return response.json();
         })
         .then((result)=>{
-            var table = document.getElementById("myTable");
+            var table = document.getElementById("datacovid");
             $.each(result, function(index, element) {
                 var row = table.insertRow(index+1);
                 row.insertCell(0).innerHTML = element.nama;
@@ -60,16 +58,14 @@
                 row.insertCell(2).innerHTML = element.sembuh;
                 row.insertCell(3).innerHTML = element.meninggal;
 
-                document.getElementById("spPositif").innerText = parseInt(document.getElementById("spPositif").innerText) + element.positif;
-                document.getElementById("spSembuh").innerText = parseInt(document.getElementById("spSembuh").innerText) + element.sembuh;
-                document.getElementById("spMeniggal").innerText = parseInt(document.getElementById("spMeniggal").innerText) + element.meninggal;
+                document.getElementById("dataPositif").innerText = parseInt(document.getElementById("dataPositif").innerText) + element.positif;
+                document.getElementById("dataSembuh").innerText = parseInt(document.getElementById("dataSembuh").innerText) + element.sembuh;
+                document.getElementById("dataMeninggal").innerText = parseInt(document.getElementById("dataMeninggal").innerText) + element.meninggal;
             });
         })
         .catch((err)=>{
             console.log(err);
         });
-
-        
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
